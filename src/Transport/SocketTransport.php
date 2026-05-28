@@ -61,6 +61,31 @@ final class SocketTransport implements TransportInterface
         return is_resource($this->stream) && ! feof($this->stream);
     }
 
+    public function isAlive(): bool
+    {
+        if (! is_resource($this->stream) || feof($this->stream)) {
+            return false;
+        }
+
+        // Non-blocking: is there anything to read right now?
+        $read = [$this->stream];
+        $write = null;
+        $except = null;
+        $ready = @stream_select($read, $write, $except, 0, 0);
+        if ($ready === false) {
+            return false;
+        }
+        if ($ready === 0) {
+            return true; // not readable → no pending EOF → healthy
+        }
+
+        // Readable: peek a byte WITHOUT consuming it. '' means the peer closed
+        // (EOF on a readable socket); any byte means the socket is alive.
+        $peek = @stream_socket_recvfrom($this->stream, 1, STREAM_PEEK);
+
+        return $peek !== '' && $peek !== false;
+    }
+
     public function send(string $bytes): void
     {
         if (! is_resource($this->stream)) {

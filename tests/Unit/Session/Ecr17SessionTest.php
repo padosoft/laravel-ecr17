@@ -54,7 +54,7 @@ const K_RESULT = '123456780E0000DATA';  // code 'E' at pos 10 -> result
 const K_RECEIPT = '123456780SLINE 1';   // code 'S' at pos 10 -> receipt
 
 test('happy path returns the result and ACKs it', function () {
-    $t = new FakeTransport();
+    $t = new FakeTransport;
     $codec = new PacketCodec(LrcMode::Std);
     $t->enqueueResponse($codec->encodeControl(PacketCodec::ACK).$codec->encodeApplication(K_RESULT));
 
@@ -69,7 +69,7 @@ test('happy path returns the result and ACKs it', function () {
 });
 
 test('NAK triggers a retransmit then succeeds', function () {
-    $t = new FakeTransport();
+    $t = new FakeTransport;
     $codec = new PacketCodec(LrcMode::Std);
     $t->enqueueResponse($codec->encodeControl(PacketCodec::NAK)); // reply to attempt 1
     $t->enqueueResponse($codec->encodeControl(PacketCodec::ACK).$codec->encodeApplication(K_RESULT));
@@ -81,7 +81,7 @@ test('NAK triggers a retransmit then succeeds', function () {
 });
 
 test('ACK timeout exhausts retries then throws', function () {
-    $t = new FakeTransport(); // no responses queued
+    $t = new FakeTransport; // no responses queued
     $session = new Ecr17Session($t, fastConfig());
 
     expect(fn () => $session->exchange('123456780P...'))->toThrow(RuntimeException::class);
@@ -89,7 +89,7 @@ test('ACK timeout exhausts retries then throws', function () {
 });
 
 test('a bad-LRC response is NAKed and no valid result arrives', function () {
-    $t = new FakeTransport();
+    $t = new FakeTransport;
     $codec = new PacketCodec(LrcMode::Std);
     $bad = $codec->encodeApplication(K_RESULT);
     $bad[strlen($bad) - 1] = chr(ord($bad[strlen($bad) - 1]) ^ 0xFF); // corrupt LRC
@@ -101,7 +101,7 @@ test('a bad-LRC response is NAKed and no valid result arrives', function () {
 });
 
 test('progress messages are forwarded', function () {
-    $t = new FakeTransport();
+    $t = new FakeTransport;
     $codec = new PacketCodec(LrcMode::Std);
     $t->enqueueResponse(
         $codec->encodeControl(PacketCodec::ACK)
@@ -121,7 +121,7 @@ test('progress messages are forwarded', function () {
 });
 
 test('receipt lines are forwarded before the result', function () {
-    $t = new FakeTransport();
+    $t = new FakeTransport;
     $codec = new PacketCodec(LrcMode::Std);
     $t->enqueueResponse(
         $codec->encodeControl(PacketCodec::ACK)
@@ -140,7 +140,7 @@ test('receipt lines are forwarded before the result', function () {
 });
 
 test('response timeout after ACK throws', function () {
-    $t = new FakeTransport();
+    $t = new FakeTransport;
     $codec = new PacketCodec(LrcMode::Std);
     $t->enqueueResponse($codec->encodeControl(PacketCodec::ACK)); // ACK only, no result
 
@@ -149,14 +149,14 @@ test('response timeout after ACK throws', function () {
 });
 
 test('a disconnect during the exchange throws', function () {
-    $t = new FakeTransport();
+    $t = new FakeTransport;
     $t->disconnectOnNextRequest();
     $session = new Ecr17Session($t, fastConfig());
     expect(fn () => $session->exchange('123456780P...'))->toThrow(RuntimeException::class);
 });
 
 test('recovers and succeeds after a reconnect', function () {
-    $t = new FakeTransport();
+    $t = new FakeTransport;
     $t->disconnectOnNextRequest();
     $session = new Ecr17Session($t, fastConfig());
 
@@ -173,7 +173,7 @@ test('recovers and succeeds after a reconnect', function () {
 });
 
 test('sendAckOnly returns on ACK', function () {
-    $t = new FakeTransport();
+    $t = new FakeTransport;
     $codec = new PacketCodec(LrcMode::Std);
     $t->enqueueResponse($codec->encodeControl(PacketCodec::ACK));
     $session = new Ecr17Session($t, fastConfig());
@@ -182,7 +182,7 @@ test('sendAckOnly returns on ACK', function () {
 });
 
 test('sendAckOnly retransmits on NAK', function () {
-    $t = new FakeTransport();
+    $t = new FakeTransport;
     $codec = new PacketCodec(LrcMode::Std);
     $t->enqueueResponse($codec->encodeControl(PacketCodec::NAK));
     $t->enqueueResponse($codec->encodeControl(PacketCodec::ACK));
@@ -192,13 +192,13 @@ test('sendAckOnly retransmits on NAK', function () {
 });
 
 test('sendAckOnly times out', function () {
-    $t = new FakeTransport(); // no ACK
+    $t = new FakeTransport; // no ACK
     $session = new Ecr17Session($t, fastConfig());
     expect(fn () => $session->sendAckOnly('123456780E1'))->toThrow(RuntimeException::class);
 });
 
 test('exchangeWithAdditionalData sends two requests', function () {
-    $t = new FakeTransport();
+    $t = new FakeTransport;
     $codec = new PacketCodec(LrcMode::Std);
     $t->enqueueResponse($codec->encodeControl(PacketCodec::ACK)); // ACK for the main 'P'
     $t->enqueueResponse($codec->encodeControl(PacketCodec::ACK).$codec->encodeApplication(K_RESULT));
@@ -209,7 +209,7 @@ test('exchangeWithAdditionalData sends two requests', function () {
 });
 
 test('receipt drain forwards receipts after the result', function () {
-    $t = new FakeTransport();
+    $t = new FakeTransport;
     $codec = new PacketCodec(LrcMode::Std);
     $t->enqueueResponse(
         $codec->encodeControl(PacketCodec::ACK)
@@ -230,7 +230,7 @@ test('receipt drain forwards receipts after the result', function () {
 });
 
 test('a result delivered before the ACK is not lost', function () {
-    $t = new FakeTransport();
+    $t = new FakeTransport;
     $codec = new PacketCodec(LrcMode::Std);
     $t->enqueueResponse($codec->encodeApplication(K_RESULT)); // result, no leading ACK
 

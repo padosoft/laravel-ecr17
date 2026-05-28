@@ -13,10 +13,9 @@ Local toolchain: **Herd** php 8.4 (`~/.config/herd/bin/php84/php.exe`) + compose
 - [x] Phase 0 — scaffolding: composer.json (php ^8.3, L13 deps), Pest + Testbench,
       Pint, PHPStan/Larastan, ServiceProvider + Facade + config/ecr17.php stubs.
       Pest green (sanity + config-merge). 
-- [ ] Phase 1 — protocol core (Lrc, PacketCodec, Ecr17Protocol, Ecr17Response) +
-      Pest tests ported 1:1 from the RN gtest suite (RN = source of truth).
+- [x] Phase 1 — protocol core (Lrc/PacketCodec/Ecr17Protocol/Ecr17Response) + tests (ported from RN).
 - [x] Phase 2 — Transport (interface + Socket + Fake) + Session + RetryPolicy + tests. 68 green.
-- [ ] Phase 3 — Laravel integration (Ecr17Client, provider binding, facade, events).
+- [x] Phase 3 — Ecr17Client (all commands, money-safety, PROACTIVE reconnect via isAlive/MSG_PEEK) + provider binding + facade. 74 green.
 - [ ] Phase 4 — demo app (Blade + React + Tailwind + AJAX polling debug console).
 - [ ] Phase 5 — CI (Pest matrix + Pint + PHPStan), wow README + cross-ref, finalize.
 

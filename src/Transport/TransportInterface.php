@@ -19,6 +19,15 @@ interface TransportInterface
 
     public function isConnected(): bool;
 
+    /**
+     * Non-destructive liveness probe: returns false if the peer has closed the
+     * connection (half-open socket) even when {@see isConnected()} still reports
+     * true. Used to reconnect PROACTIVELY before sending, so a financial command
+     * never starts on a stale socket (which would surface a false "disconnected"
+     * and — correctly — not be retried). Must NOT consume buffered bytes.
+     */
+    public function isAlive(): bool;
+
     /** Send raw bytes (a fully framed packet). */
     public function send(string $bytes): void;
 

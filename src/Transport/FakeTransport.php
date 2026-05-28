@@ -28,9 +28,16 @@ final class FakeTransport implements TransportInterface
 
     private bool $dropped = false;
 
+    private bool $peerClosed = false; // half-open: isConnected() still true, but dead
+
     public function connect(): void
     {
+        // A (re)connect yields a fresh, healthy socket: clear any pending drop so
+        // the client's auto-reconnect path can succeed on retry.
         $this->connected = true;
+        $this->dropped = false;
+        $this->disconnectOnRequest = false;
+        $this->peerClosed = false;
     }
 
     public function disconnect(): void
@@ -41,6 +48,11 @@ final class FakeTransport implements TransportInterface
     public function isConnected(): bool
     {
         return $this->connected;
+    }
+
+    public function isAlive(): bool
+    {
+        return $this->connected && ! $this->dropped && ! $this->peerClosed;
     }
 
     public function send(string $bytes): void
@@ -62,7 +74,7 @@ final class FakeTransport implements TransportInterface
 
     public function read(int $timeoutMs): string
     {
-        if ($this->dropped) {
+        if ($this->dropped || $this->peerClosed) {
             throw new TransportException('ECR17: transport disconnected during exchange');
         }
 
@@ -90,6 +102,15 @@ final class FakeTransport implements TransportInterface
     public function disconnectOnNextRequest(): void
     {
         $this->disconnectOnRequest = true;
+    }
+
+    /**
+     * Simulate the peer having closed the socket between transactions: the socket
+     * still reports connected (stale), but isAlive() is false until reconnect.
+     */
+    public function simulatePeerClosed(): void
+    {
+        $this->peerClosed = true;
     }
 
     /** Simulate a successful reconnect. */

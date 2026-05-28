@@ -22,6 +22,6 @@ final class PaymentResponse
         public string $acquirerId = '',       // common
         public string $stan = '',             // common
         public string $onlineId = '',         // common
-        public DccInfo $currency = new DccInfo(),
+        public DccInfo $currency = new DccInfo,
     ) {}
 }

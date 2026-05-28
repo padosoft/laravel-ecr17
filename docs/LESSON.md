@@ -44,6 +44,17 @@ PHP/Laravel-specific learnings as we build.
   (`resetForNewTransaction`) so it's reusable across reconnects — RN bug: a sticky
   "disconnected" flag broke auto-reconnect until reset per exchange.
 - Mask PAN in any log (screen + file/export); keep last 4 only.
+- **Proactive reconnection before sending.** ECR17/Nexi terminals often close the
+  TCP socket between transactions, and a half-open socket isn't detectable without
+  a read (`feof()`/`isConnected()` report stale `true`). If a financial command is
+  sent on that stale socket it fails reactively → money-safety (correctly) refuses
+  to retry → false error; the side-effect reconnect then makes the NEXT attempt
+  work ("one yes, one no"). Fix: `Ecr17Client::ensureConnected()` does a
+  NON-DESTRUCTIVE liveness probe (`TransportInterface::isAlive()` → `stream_select`
+  + `stream_socket_recvfrom(..., STREAM_PEEK)` in `SocketTransport`) and reconnects
+  BEFORE sending, so every command starts on a verified-live socket. (Same fix
+  applied on the RN side.) Money-safety unchanged: a genuine MID-exchange drop is
+  still never retried for financial commands.
 
 ## Session orchestration gotchas (from RN)
 - Handle an **APPLICATION result that arrives before/without the ACK** during the

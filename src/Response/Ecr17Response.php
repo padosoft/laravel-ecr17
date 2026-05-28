@@ -14,7 +14,7 @@ final class Ecr17Response
 {
     public static function parsePayment(string $p): PaymentResponse
     {
-        $r = new PaymentResponse();
+        $r = new PaymentResponse;
         $code = self::at($p, 10, 1); // 'E' plain or 'V' DCC
         $dcc = $code === 'V';
 
@@ -51,7 +51,7 @@ final class Ecr17Response
 
     public static function parseStatus(string $p): StatusResponse
     {
-        $r = new StatusResponse();
+        $r = new StatusResponse;
         $r->terminalId = self::at($p, 1, 8);
         $r->dateTimeRaw = self::at($p, 21, 10);
         $s = self::at($p, 31, 1);
@@ -63,7 +63,7 @@ final class Ecr17Response
 
     public static function parseTotals(string $p): TotalsResponse
     {
-        $r = new TotalsResponse();
+        $r = new TotalsResponse;
         $r->resultCode = self::at($p, 11, 2);
         $r->outcome = Outcome::fromCode($r->resultCode);
         $r->posTotal = self::at($p, 13, 16);
@@ -73,7 +73,7 @@ final class Ecr17Response
 
     public static function parseClose(string $p): CloseResponse
     {
-        $r = new CloseResponse();
+        $r = new CloseResponse;
         $r->resultCode = self::at($p, 11, 2);
         $r->outcome = Outcome::fromCode($r->resultCode);
 
@@ -90,7 +90,7 @@ final class Ecr17Response
 
     public static function parsePreAuth(string $p): PreAuthResponse
     {
-        $r = new PreAuthResponse();
+        $r = new PreAuthResponse;
         $r->resultCode = self::at($p, 11, 2);
         $r->outcome = Outcome::fromCode($r->resultCode);
 
@@ -121,7 +121,7 @@ final class Ecr17Response
 
     public static function parseVas(string $p): VasResponse
     {
-        $r = new VasResponse();
+        $r = new VasResponse;
         $r->moreMessages = self::at($p, 15, 1) === '1';
         $r->idMessage = self::at($p, 16, 3);
         $r->rawXml = self::at($p, 27, strlen($p));
