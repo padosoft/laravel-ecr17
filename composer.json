@@ -1,0 +1,58 @@
+{
+    "name": "padosoft/laravel-ecr17",
+    "description": "Italian ECR17 / Protocollo 17 payment protocol (Nexi Group POS terminals) over TCP for PHP & Laravel.",
+    "keywords": ["laravel", "ecr17", "protocollo17", "nexi", "pos", "payment-terminal", "cassa"],
+    "homepage": "https://github.com/padosoft/laravel-ecr17",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "padosoft",
+            "homepage": "https://github.com/padosoft"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "illuminate/support": "^13.0",
+        "illuminate/contracts": "^13.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^11.0",
+        "pestphp/pest": "^4.0",
+        "laravel/pint": "^1.18",
+        "larastan/larastan": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Padosoft\\Ecr17\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Padosoft\\Ecr17\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Padosoft\\Ecr17\\Ecr17ServiceProvider"
+            ],
+            "aliases": {
+                "Ecr17": "Padosoft\\Ecr17\\Facades\\Ecr17"
+            }
+        }
+    },
+    "scripts": {
+        "test": "pest",
+        "lint": "pint --test",
+        "format": "pint",
+        "analyse": "phpstan analyse"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

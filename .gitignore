@@ -1,0 +1,15 @@
+/vendor/
+/build/
+/node_modules/
+composer.lock
+.phpunit.result.cache
+.phpunit.cache/
+.php-cs-fixer.cache
+.DS_Store
+/demo/vendor/
+/demo/node_modules/
+/demo/.env
+/demo/public/build/
+/demo/storage/*.key
+.idea/
+.vscode/
