@@ -16,8 +16,8 @@ Local toolchain: **Herd** php 8.4 (`~/.config/herd/bin/php84/php.exe`) + compose
 - [x] Phase 1 — protocol core (Lrc/PacketCodec/Ecr17Protocol/Ecr17Response) + tests (ported from RN).
 - [x] Phase 2 — Transport (interface + Socket + Fake) + Session + RetryPolicy + tests. 68 green.
 - [x] Phase 3 — Ecr17Client (all commands, money-safety, PROACTIVE reconnect via isAlive/MSG_PEEK) + provider binding + facade. 74 green.
-- [ ] Phase 4 — demo app (Blade + React + Tailwind + AJAX polling debug console).
-- [ ] Phase 5 — CI (Pest matrix + Pint + PHPStan), wow README + cross-ref, finalize.
+- [x] Phase 4 — demo app (Laravel 13 in demo/, React+Tailwind+AJAX console via CDN, controller+routes+DemoLog).
+- [x] Phase 5 — CI (Pest matrix + Pint + PHPStan, green) + wow README + cross-ref to RN. PACKAGE COMPLETE.
 
 ## Source of truth
 RN repo `react-native-ecr17-protocol` (`package/cpp/**` + `package/cpp/tests/**`).
