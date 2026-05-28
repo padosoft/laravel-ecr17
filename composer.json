@@ -45,7 +45,7 @@
         "test": "pest",
         "lint": "pint --test",
         "format": "pint",
-        "analyse": "phpstan analyse"
+        "analyse": "phpstan analyse --memory-limit=1G"
     },
     "config": {
         "sort-packages": true,
