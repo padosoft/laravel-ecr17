@@ -15,7 +15,7 @@ Local toolchain: **Herd** php 8.4 (`~/.config/herd/bin/php84/php.exe`) + compose
       Pest green (sanity + config-merge). 
 - [ ] Phase 1 — protocol core (Lrc, PacketCodec, Ecr17Protocol, Ecr17Response) +
       Pest tests ported 1:1 from the RN gtest suite (RN = source of truth).
-- [ ] Phase 2 — Transport (interface + Socket + Fake) + Session + RetryPolicy + tests.
+- [x] Phase 2 — Transport (interface + Socket + Fake) + Session + RetryPolicy + tests. 68 green.
 - [ ] Phase 3 — Laravel integration (Ecr17Client, provider binding, facade, events).
 - [ ] Phase 4 — demo app (Blade + React + Tailwind + AJAX polling debug console).
 - [ ] Phase 5 — CI (Pest matrix + Pint + PHPStan), wow README + cross-ref, finalize.
