@@ -16,6 +16,7 @@
     <div id="root" class="min-h-screen"></div>
 
     <script type="text/babel" data-presets="react">
+@verbatim
 const { useState, useEffect, useRef, useCallback } = React;
 
 const CSRF = document.querySelector('meta[name="csrf-token"]').content;
@@ -251,6 +252,7 @@ function Bool({ label, value, onChange }) {
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+@endverbatim
     </script>
 </body>
 </html>
