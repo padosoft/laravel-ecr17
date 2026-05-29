@@ -166,7 +166,22 @@ otherwise fail and — correctly — refuse a financial retry).
 
 The `demo/` directory contains a small Laravel app with a **React + Tailwind**
 debug console (AJAX): configure & connect to a POS, run every command, and watch
-the behind-the-scenes log (on screen + file). See `demo/README.md`.
+the behind-the-scenes log (on screen + file).
+
+<div align="center">
+<img src="resources/screenshoots/ECR17-Debug-Console.png" alt="ECR17 Debug Console demo app" width="100%">
+</div>
+
+```bash
+cd demo
+composer install
+cp .env.example .env          # PowerShell: Copy-Item .env.example .env
+php artisan key:generate
+php artisan serve             # then open http://localhost:8000
+```
+
+No `npm`/Vite build is needed — the frontend loads React + Tailwind from a CDN.
+See [`demo/README.md`](demo/README.md) for details.
 
 ## 🏭 Production usage
 
