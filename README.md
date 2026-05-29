@@ -11,6 +11,8 @@
 [![License: MIT](https://img.shields.io/packagist/l/padosoft/laravel-ecr17.svg?style=flat-square)](LICENSE)
 [![PHP](https://img.shields.io/packagist/php-v/padosoft/laravel-ecr17.svg?style=flat-square)](composer.json)
 
+<img src="resources/banner.png" alt="laravel-ecr17 banner" width="100%">
+
 </div>
 
 > 📱 **Building for iOS / Android (React Native)?** There's a sibling port:
