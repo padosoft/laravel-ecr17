@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">laravel-ecr17</title>
+  <rect width="64" height="64" rx="14" fill="#0f172a"/>
+  <path d="M14 19h36v26H14z" fill="#0d9488"/>
+  <path d="M18 24h28v5H18zm0 9h13v4H18zm17 0h11v4H35z" fill="#ecfeff"/>
+  <path d="M21 48h22" stroke="#99f6e4" stroke-width="4" stroke-linecap="round"/>
+</svg>

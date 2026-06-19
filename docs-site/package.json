@@ -1,0 +1,18 @@
+{
+  "name": "laravel-ecr17-docs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static docmd documentation site for padosoft/laravel-ecr17.",
+  "type": "module",
+  "scripts": {
+    "dev": "node node_modules/@docmd/core/dist/bin/docmd.js dev",
+    "build": "node node_modules/@docmd/core/dist/bin/docmd.js build",
+    "check": "node scripts/check-no-raw-html.mjs && node node_modules/@docmd/core/dist/bin/docmd.js validate"
+  },
+  "dependencies": {
+    "@docmd/core": "^0.8.6",
+    "@huggingface/transformers": "^4.2.0",
+    "docmd-search": "^0.1.0-alpha.1",
+    "onnxruntime-node": "1.24.3"
+  }
+}

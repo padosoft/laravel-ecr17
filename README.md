@@ -6,6 +6,8 @@
 
 **The most complete open-source ECR17 toolkit for PHP & Laravel.**
 
+📚 **Official docs:** [https://doc.laravel-ecr17.padosoft.com](https://doc.laravel-ecr17.padosoft.com)
+
 [![Packagist Version](https://img.shields.io/packagist/v/padosoft/laravel-ecr17.svg?style=flat-square)](https://packagist.org/packages/padosoft/laravel-ecr17)
 [![Tests](https://github.com/padosoft/laravel-ecr17/actions/workflows/tests.yml/badge.svg)](https://github.com/padosoft/laravel-ecr17/actions/workflows/tests.yml)
 [![License: MIT](https://img.shields.io/packagist/l/padosoft/laravel-ecr17.svg?style=flat-square)](LICENSE)

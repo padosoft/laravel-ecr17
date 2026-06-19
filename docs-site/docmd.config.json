@@ -1,0 +1,238 @@
+{
+  "title": "laravel-ecr17",
+  "description": "Italian ECR17 / Protocollo 17 payment protocol over TCP for PHP and Laravel.",
+  "url": "https://doc.laravel-ecr17.padosoft.com",
+  "src": "docs",
+  "out": "_site",
+  "base": "/",
+  "favicon": "assets/favicon.svg",
+  "copyCode": true,
+  "pageNavigation": true,
+  "minify": true,
+  "logo": {
+    "light": "assets/favicon.svg",
+    "dark": "assets/favicon.svg",
+    "alt": "laravel-ecr17"
+  },
+  "theme": {
+    "name": "default",
+    "appearance": "system",
+    "primaryColor": "#0d9488",
+    "customCss": [
+      "assets/custom.css"
+    ]
+  },
+  "layout": {
+    "spa": true,
+    "header": {
+      "enabled": true
+    },
+    "sidebar": {
+      "enabled": true,
+      "collapsible": true,
+      "defaultCollapsed": false
+    },
+    "footer": {
+      "style": "minimal",
+      "content": "MIT © padosoft. Documentation for padosoft/laravel-ecr17."
+    },
+    "menubar": {
+      "enabled": true,
+      "left": [
+        {
+          "title": "GitHub",
+          "path": "https://github.com/padosoft/laravel-ecr17"
+        },
+        {
+          "title": "Packagist",
+          "path": "https://packagist.org/packages/padosoft/laravel-ecr17"
+        }
+      ],
+      "right": [
+        {
+          "title": "Demo",
+          "path": "/guides/demo-debug-console"
+        }
+      ]
+    },
+    "optionsMenu": {
+      "position": "header",
+      "components": {
+        "search": true,
+        "themeSwitch": true
+      }
+    }
+  },
+  "footer": {
+    "style": "minimal",
+    "content": "MIT © padosoft. Built with docmd."
+  },
+  "navigation": [
+    {
+      "title": "Get Started",
+      "children": [
+        {
+          "title": "Overview",
+          "path": "/"
+        },
+        {
+          "title": "Quickstart",
+          "path": "/get-started/quickstart"
+        },
+        {
+          "title": "Installation",
+          "path": "/get-started/installation"
+        },
+        {
+          "title": "Configuration",
+          "path": "/get-started/configuration"
+        }
+      ]
+    },
+    {
+      "title": "Guides",
+      "children": [
+        {
+          "title": "Payments",
+          "path": "/guides/payments"
+        },
+        {
+          "title": "Recovery",
+          "path": "/guides/recovery"
+        },
+        {
+          "title": "Tokenization",
+          "path": "/guides/tokenization"
+        },
+        {
+          "title": "Demo Debug Console",
+          "path": "/guides/demo-debug-console"
+        }
+      ]
+    },
+    {
+      "title": "Concetti & Teoria",
+      "children": [
+        {
+          "title": "Motivazione",
+          "path": "/concetti-teoria/motivazione"
+        },
+        {
+          "title": "Teoria",
+          "path": "/concetti-teoria/teoria"
+        },
+        {
+          "title": "Money Safety",
+          "path": "/concetti-teoria/money-safety"
+        }
+      ]
+    },
+    {
+      "title": "Architettura",
+      "children": [
+        {
+          "title": "Overview",
+          "path": "/architettura/overview"
+        },
+        {
+          "title": "Pipeline Workflow",
+          "path": "/architettura/pipeline-workflow"
+        },
+        {
+          "title": "Modello Dati Contratto",
+          "path": "/architettura/modello-dati-contratto"
+        },
+        {
+          "title": "ADR",
+          "path": "/architettura/adr"
+        }
+      ]
+    },
+    {
+      "title": "Best Practices",
+      "children": [
+        {
+          "title": "Production",
+          "path": "/best-practices/production"
+        },
+        {
+          "title": "Testing",
+          "path": "/best-practices/testing"
+        },
+        {
+          "title": "Security",
+          "path": "/best-practices/security"
+        }
+      ]
+    },
+    {
+      "title": "Operations",
+      "children": [
+        {
+          "title": "Troubleshooting",
+          "path": "/operations/troubleshooting"
+        },
+        {
+          "title": "Observability",
+          "path": "/operations/observability"
+        },
+        {
+          "title": "Runbook",
+          "path": "/operations/runbook"
+        }
+      ]
+    },
+    {
+      "title": "Reference",
+      "children": [
+        {
+          "title": "CLI",
+          "path": "/reference/cli"
+        },
+        {
+          "title": "API",
+          "path": "/reference/api"
+        },
+        {
+          "title": "Configuration API",
+          "path": "/reference/configuration-api"
+        },
+        {
+          "title": "Response API",
+          "path": "/reference/response-api"
+        }
+      ]
+    }
+  ],
+  "plugins": {
+    "search": {
+      "semantic": true,
+      "indexDir": ".docmd-search",
+      "model": "Xenova/all-MiniLM-L6-v2",
+      "chunkSize": 512,
+      "chunkOverlap": 64,
+      "showConfidence": true,
+      "showFilters": true
+    },
+    "git": {
+      "repo": "https://github.com/padosoft/laravel-ecr17",
+      "editLink": true
+    },
+    "seo": {
+      "titleTemplate": "%s | laravel-ecr17",
+      "description": "Italian ECR17 / Protocollo 17 payment protocol over TCP for PHP and Laravel.",
+      "author": "padosoft",
+      "license": "MIT",
+      "image": "https://doc.laravel-ecr17.padosoft.com/assets/favicon.svg"
+    },
+    "sitemap": {
+      "defaultChangefreq": "weekly",
+      "defaultPriority": 0.8,
+      "rootPriority": 1
+    },
+    "mermaid": true,
+    "math": true,
+    "llms": true,
+    "analytics": false
+  }
+}
