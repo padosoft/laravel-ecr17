@@ -5,7 +5,6 @@
   "src": "docs",
   "out": "_site",
   "base": "/",
-  "favicon": "assets/favicon.svg",
   "copyCode": true,
   "pageNavigation": true,
   "minify": true,
@@ -234,5 +233,6 @@
     "math": true,
     "llms": true,
     "analytics": false
-  }
+  },
+  "favicon": "assets/favicon.svg"
 }

@@ -5,9 +5,9 @@
   "description": "Static docmd documentation site for padosoft/laravel-ecr17.",
   "type": "module",
   "scripts": {
-    "dev": "node node_modules/@docmd/core/dist/bin/docmd.js dev",
-    "build": "node node_modules/@docmd/core/dist/bin/docmd.js build",
-    "check": "node scripts/check-no-raw-html.mjs && node node_modules/@docmd/core/dist/bin/docmd.js validate"
+    "dev": "docmd dev",
+    "build": "docmd build",
+    "check": "node scripts/check-no-raw-html.mjs"
   },
   "dependencies": {
     "@docmd/core": "^0.8.6",
