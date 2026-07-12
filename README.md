@@ -21,6 +21,10 @@
 > **[padosoft/react-native-ecr17-protocol](https://github.com/padosoft/react-native-ecr17-protocol)** —
 > the same ECR17 protocol as a React Native / Nitro module. It is the behavioral
 > source of truth; this PHP package mirrors its protocol core and test suite.
+>
+> 🦀 **Using Rust / building a desktop app?** There's a sibling port:
+> **[padosoft/rust-ecr17-protocol](https://github.com/padosoft/rust-ecr17-protocol)** —
+> the same ECR17 protocol as a pure-Rust crate + a Tauri desktop control panel.
 
 ---
 
